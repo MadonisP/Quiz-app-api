@@ -5,9 +5,13 @@ const ExamSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  examName: {
+  examname: {
     type: String,
     lowercase: true,
+  },
+  passGrade:{
+    type: Number,
+    default:70,
   },
   time:{
     type: Number,

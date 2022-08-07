@@ -1,9 +1,9 @@
 const express = require('express')
-const ExamQuestions = require('../models/examQuestions')
+const Exam = require('../models/exam')
 const router = express.Router()
 
 router.get('/', (req, resp) => {
-    ExamQuestions.find().then(data => {
+    Exam.find().then(data => {
         resp.json(data)
     }).catch(e => {
         resp.json({ message: e })
@@ -11,12 +11,13 @@ router.get('/', (req, resp) => {
 })
 
 router.post('/', (req, resp) => {
-    const examQuestions = new ExamQuestions({
+    const exam = new Exam({
         creatorUserId: req.body.creatorUserId,
-        examName: req.body.examName,
+        examname: req.body.examname,
+        passGrade: req.body.passGrade,
         time: req.body.time,
     })
-    examQuestions.save().then(data => {
+    exam.save().then(data => {
         resp.json(data)
     }).catch(e => {
         resp.json({ message: e })
@@ -24,10 +25,11 @@ router.post('/', (req, resp) => {
 })
 
 router.patch('/:id', (req, resp) => {
-    ExamQuestions.updateOne({ _id: req.params.id }, {
+    Exam.updateOne({ _id: req.params.id }, {
         $set: {
             creatorUserId: req.body.creatorUserId,
             examName: req.body.examName,
+            passGrade: req.body.passGrade,
             time: req.body.time,
         }
     }).then(data => {
@@ -38,7 +40,7 @@ router.patch('/:id', (req, resp) => {
 })
 
 router.delete('/:id', (req, resp) => {
-    ExamQuestions.deleteOne({ _id: req.params.id })
+    Exam.deleteOne({ _id: req.params.id })
         .then(data => {
             resp.json(data)
         }).catch(e => {

@@ -2,6 +2,7 @@ const express = require('express')
 const Exam = require('../models/exam')
 const router = express.Router()
 
+//Get Exam(s)
 router.get('/', (req, resp) => {
     Exam.find().then(data => {
         resp.json(data)
@@ -9,6 +10,18 @@ router.get('/', (req, resp) => {
         resp.json({ message: e })
     })
 })
+
+//GET Exam
+router.get("/:id", async (req, resp) => {
+    try {
+        Exam.find({ creatorUserId: req.params.id}).then(data => {
+            resp.json(data)
+        })
+    } catch (err) {
+        resp.json({ message: err });
+    }
+});
+
 
 router.post('/', (req, resp) => {
     const exam = new Exam({

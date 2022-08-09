@@ -3,18 +3,16 @@ const mongoose = require("mongoose");
 const ExamQuestionsSchema = new mongoose.Schema({
     examId: {
         type: String,
-        required: true,
-        unique: true
     },
     questionTitle: {
         type: String,
-        required: true,
-        unique: true
     },
     options: {
         type: Array,
-        required:true,
     },
+    correctOption: {
+        type: String
+    }
 })
 
-module.exports = mongoose.model("examQuestions", ExamQuestionsSchema);
+module.exports = mongoose.model("examquestions", ExamQuestionsSchema);

@@ -22,6 +22,16 @@ router.get("/:id", async (req, resp) => {
     }
 });
 
+//GET Exam by examId
+router.get("/exam/:id", async (req, resp) => {
+    try {
+        Exam.find({ _id: req.params.id }).then(data => {
+            resp.json(data)
+        })
+    } catch (err) {
+        resp.json({ message: err });
+    }
+});
 
 router.post('/', (req, resp) => {
     const exam = new Exam({

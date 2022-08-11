@@ -11,6 +11,17 @@ router.get('/', (req, resp) => {
     })
 })
 
+//spesific user
+router.get("/:id", async (req, resp) => {
+    try {
+        User.find({ _id: req.params.id }).then(data => {
+            resp.json(data)
+        })
+    } catch (err) {
+        resp.json({ message: err });
+    }
+});
+
 router.post("/", async (req, resp) => {
     try {
         const { firstname, lastname, email, password } = req.body;

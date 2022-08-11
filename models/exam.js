@@ -11,7 +11,7 @@ const ExamSchema = new mongoose.Schema({
   },
   passGrade:{
     type: Number,
-    default:70,
+    default:2,
   },
   time:{
     type: Number,

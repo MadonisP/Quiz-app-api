@@ -9,15 +9,19 @@ const ExamSchema = new mongoose.Schema({
     type: String,
     lowercase: true,
   },
-  passGrade:{
+  passGrade: {
     type: Number,
-    default:2,
+    default: 2,
   },
-  time:{
+  time: {
     type: Number,
-    default:20,
+    default: 20,
   },
-});
+},
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("exam", ExamSchema);
 

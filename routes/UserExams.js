@@ -31,6 +31,33 @@ router.get("/exam/:id", async (req, resp) => {
     }
 });
 
+/*
+
+router.get("/exam/:id", async (req, resp) => {
+    try {
+        let resultList = [];
+        const userExams = UserExams.find({ examId: req.params.id });
+
+        userExams.forEach(element => {
+            const user = Users.findOne(element.userId);
+
+            resultList.push({
+                usename: user.name,
+                examId: element.examId,
+                userExamId: element,
+            })
+
+        });
+
+
+
+    } catch (err) {
+        resp.json({ message: err });
+    }
+});
+
+*/
+
 router.post('/', (req, resp) => {
     const userExams = new UserExams({
         examId: req.body.examId,

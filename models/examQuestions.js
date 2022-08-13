@@ -7,17 +7,19 @@ const ExamQuestionsSchema = new mongoose.Schema({
     questionTitle: {
         type: String,
     },
-    options: {
-        type: Array,
-    },
-    correctOption: {
-        type: String
-    },
+    options: [{
+        option: {
+            type: String,
+        },
+        isCorrect: {
+            type: Boolean,
+            default: false
+        }
+    }],
 },
     {
         timestamps: true,
     }
-
 )
 
 module.exports = mongoose.model("examquestions", ExamQuestionsSchema);

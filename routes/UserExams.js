@@ -63,6 +63,8 @@ router.post('/', (req, resp) => {
         examId: req.body.examId,
         userId: req.body.userId,
         grade: req.body.grade,
+        userInfo: req.body.userInfo,
+        examReview: req.body.examReview,
     })
     userExams.save().then(data => {
         resp.json(data)
@@ -77,6 +79,7 @@ router.patch('/:id', (req, resp) => {
             examId: req.body.examId,
             userId: req.body.userId,
             grade: req.body.grade,
+            examReview: req.body.examReview,
         }
     }).then(data => {
         resp.json(data)

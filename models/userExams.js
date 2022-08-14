@@ -14,6 +14,27 @@ const UserExamsSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    userInfo: {
+        username: {
+            type: String,
+        },
+        examname: {
+            type: String,
+        }
+    },
+    examReview: [{
+
+        qAnswers: {
+            type: Array,
+        },
+        qCorrect: {
+            type: Array,
+        },
+        qTitle: {
+            type: Array,
+        }
+    }
+    ]
 },
     {
         timestamps: true,

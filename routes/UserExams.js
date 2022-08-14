@@ -73,6 +73,18 @@ router.post('/', (req, resp) => {
     })
 })
 
+router.put("/:id", (req, resp) => {
+    UserExams.updateOne({ userId: req.params.id }, {
+        $push: {
+            examReview: req.body.examReview,
+        }
+    }).then(data => {
+        resp.json(data)
+    }).catch(e => {
+        resp.json({ message: e })
+    })
+})
+
 router.patch('/:id', (req, resp) => {
     UserExams.updateOne({ userId: req.params.id }, {
         $set: {

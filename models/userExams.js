@@ -25,16 +25,15 @@ const UserExamsSchema = new mongoose.Schema({
     examReview: [{
 
         qAnswers: {
-            type: Array,
+            type: String,
         },
         qCorrect: {
-            type: Array,
+            type: String,
         },
         qTitle: {
-            type: Array,
+            type: String,
         }
-    }
-    ]
+    }], 
 },
     {
         timestamps: true,

@@ -50,8 +50,7 @@ router.post('/', (req, resp) => {
 router.patch('/:id', (req, resp) => {
     Exam.updateOne({ _id: req.params.id }, {
         $set: {
-            creatorUserId: req.body.creatorUserId,
-            examName: req.body.examName,
+            examname: req.body.examname,
             passGrade: req.body.passGrade,
             time: req.body.time,
         }

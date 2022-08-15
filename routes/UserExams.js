@@ -65,6 +65,7 @@ router.post('/', (req, resp) => {
         grade: req.body.grade,
         userInfo: req.body.userInfo,
         examReview: req.body.examReview,
+        status: req.body.status,
     })
     userExams.save().then(data => {
         resp.json(data)
@@ -74,7 +75,7 @@ router.post('/', (req, resp) => {
 })
 
 router.put("/:id", (req, resp) => {
-    UserExams.updateOne({ userId: req.params.id }, {
+    UserExams.updateOne({ _id: req.params.id }, {
         $push: {
             examReview: req.body.examReview,
         }
@@ -86,7 +87,7 @@ router.put("/:id", (req, resp) => {
 })
 
 router.patch('/:id', (req, resp) => {
-    UserExams.updateOne({ userId: req.params.id }, {
+    UserExams.updateOne({ _id: req.params.id }, {
         $set: {
             examId: req.body.examId,
             userId: req.body.userId,

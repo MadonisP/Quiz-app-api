@@ -14,6 +14,9 @@ const UserExamsSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    status: {
+        type: String,
+    },
     userInfo: {
         username: {
             type: String,
@@ -33,7 +36,7 @@ const UserExamsSchema = new mongoose.Schema({
         qTitle: {
             type: String,
         }
-    }], 
+    }],
 },
     {
         timestamps: true,

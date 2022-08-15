@@ -14,7 +14,7 @@ router.get('/', (req, resp) => {
 //GET ExamQ
 router.get("/:id", async (req, resp) => {
     try {
-        ExamQuestions.find({ examId: req.params.id}).then(data => {
+        ExamQuestions.find({ examId: req.params.id }).then(data => {
             resp.json(data)
         })
     } catch (err) {
@@ -30,6 +30,18 @@ router.post('/', (req, resp) => {
         correctOption: req.body.correctOption,
     })
     examQuestions.save().then(data => {
+        resp.json(data)
+    }).catch(e => {
+        resp.json({ message: e })
+    })
+})
+
+router.put("/:id", (req, resp) => {
+    ExamQuestions.updateOne({ _id: req.params.id }, {
+        $push: {
+            options: req.body.options,
+        }
+    }).then(data => {
         resp.json(data)
     }).catch(e => {
         resp.json({ message: e })
